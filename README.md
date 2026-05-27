@@ -1,2 +1,69 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # pegap
-An R package aiming to bridge some of the gaps in PE portfolio analysis
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+`pegap` is an R package made to bridge the gaps in private equity
+portfolio analysis. It contains functions for calculating vintage year
+diversification, forecasting unfunded capital call liabilities, and
+visualising portfolios.
+
+## Installation
+
+``` r
+# install.packages("pak")
+pak::pak("ADC-405-S26/pegap")
+```
+
+## Functions
+
+`pegap` has 3 main functions:
+
+- `vintage_diversification_score()` — scores how concentrated a PE
+  portfolio is across vintage years using HHI
+- `unfunded_liability_schedule()` — forecasts future capital calls
+  across a 5-year schedule with a preset drawdown curve
+- `portfolio_plot()` — visualises portfolio progress by vintage year as
+  a scatterplot
+
+## Examples
+
+``` r
+library(pegap)
+
+vintage_diversification_score(
+  fund_names = c("Fund A", "Fund B", "Fund C"),
+  vintage_years = c(2019, 2020, 2019),
+  committed_capital = c(10000, 15000, 8000)
+)
+#> $vintage_weights
+#>  2019  2020 
+#> 0.545 0.455 
+#> 
+#> $HHI
+#> [1] 0.504
+#> 
+#> $effective_vintages
+#> [1] 2
+#> 
+#> $diversification_score
+#> [1] 99.2
+#> 
+#> $flag
+#> [1] "WARNING: High vintage concentration"
+
+unfunded_liability_schedule(code_script)
+#>     fund current_unfunded Year1 Year2 Year3 Year4 Year5
+#> 1 Fund A             2000   100   400   700   500   300
+#> 2 Fund B             3500   175   700  1225   875   525
+#> 3 Fund C             2500   125   500   875   625   375
+#> 4 Fund D            10000   500  2000  3500  2500  1500
+#> 5 Fund E             9000   450  1800  3150  2250  1350
+
+portfolio_plot(code_script)
+```
+
+<img src="man/figures/README-example-1.png" width="100%" />

@@ -1,4 +1,4 @@
-fund_df <- data.frame(
+code_script <- data.frame(
   fund = c("Fund A", "Fund B", "Fund C", "Fund D", "Fund E"),
   vintage_year = c(2019, 2020, 2019, 2021, 2022),
   commitment   = c(10000, 15000, 8000, 20000, 12000),
