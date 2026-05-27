@@ -1,7 +1,7 @@
 #' Score Vintage Year Diversification
 #'
 #' @param fund_names A character vector of fund names
-#' @param vintage_years An integer vector of vintage years
+#' @param vintage_years A numeric vector of vintage years
 #' @param committed_capital A numeric vector of committed capital amounts (must be positive)
 #'
 #' @return A named list containing vintage_weights, HHI, effective_vintages,
@@ -11,31 +11,31 @@
 #' @examples
 #' vintage_diversification_score(
 #'   c("Fund A", "Fund B", "Fund C"),
-#'   c(2018L, 2019L, 2018L),
-#'   c(10e6, 15e6, 5e6)
+#'   c(2018, 2019, 2018),
+#'   c(10000000, 15000000, 5000000)
 #' )
 vintage_diversification_score <- function(fund_names, vintage_years, committed_capital) {
 
   checkmate::assert_character(fund_names)
-  checkmate::assert_integerish(vintage_years)
+  checkmate::assert_numeric(vintage_years)
   checkmate::assert_numeric(committed_capital, lower = 0)
 
-  df <- data.frame(fund = fund_names,
-                   vintage = vintage_years,
-                   capital = committed_capital)
+  #calculate weights directly (split capital by vintage)
+  vintage_totals <- tapply(committed_capital, vintage_years, sum)
+  vintage_weights <- vintage_totals / sum(committed_capital)
 
-  total <- sum(df$capital)
-  vintage_weights <- tapply(df$capital, df$vintage, sum) / total
   hhi <- sum(vintage_weights^2)
-  eff_vintages <- 1 / hhi
-  n_vintages <- length(unique(df$vintage))
-  score <- round((1 - hhi) / (1 - 1/n_vintages) * 100, 1)
+  n_vintages <- length(vintage_weights)
+
+  #what if only 1 vintage
+  score <- if (n_vintages > 1) round((1 - hhi) / (1 - 1 / n_vintages) * 100, 1)
+            else 0.0
 
   list(
     vintage_weights = round(sort(vintage_weights, decreasing = TRUE), 3),
     HHI = round(hhi, 3),
-    effective_vintages = round(eff_vintages, 1),
+    effective_vintages = round(1 / hhi, 1),
     diversification_score = score,
-    flag = ifelse(hhi > 0.25, "WARNING: High vintage concentration", "OK")
+    flag = if (hhi > 0.25) "WARNING: High vintage concentration" else "OK"
   )
 }
