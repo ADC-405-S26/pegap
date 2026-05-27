@@ -1,0 +1,9 @@
+pandoc: 3.8.3
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  intro-to-pegap: intro-to-pegap.html
+last_built: 2026-05-27T04:53Z
+urls:
+  reference: https://OReece.github.io/ADC-405-S26-pegap/reference
+  article: https://OReece.github.io/ADC-405-S26-pegap/articles
