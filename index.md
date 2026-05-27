@@ -17,13 +17,13 @@ pak::pak("ADC-405-S26/pegap")
 
 `pegap` has 3 main functions:
 
-- [`vintage_diversification_score()`](https://OReece.github.io/ADC-405-S26-pegap/reference/vintage_diversification_score.md)
+- [`vintage_diversification_score()`](https://github.com/ADC-405-S26/pegap/reference/vintage_diversification_score.md)
   — scores how concentrated a PE portfolio is across vintage years using
   HHI
-- [`unfunded_liability_schedule()`](https://OReece.github.io/ADC-405-S26-pegap/reference/unfunded_liability_schedule.md)
+- [`unfunded_liability_schedule()`](https://github.com/ADC-405-S26/pegap/reference/unfunded_liability_schedule.md)
   — forecasts future capital calls across a 5-year schedule with a
   preset drawdown curve
-- [`portfolio_plot()`](https://OReece.github.io/ADC-405-S26-pegap/reference/portfolio_plot.md)
+- [`portfolio_plot()`](https://github.com/ADC-405-S26/pegap/reference/portfolio_plot.md)
   — visualises portfolio progress by vintage year as a scatterplot
 
 ## Examples
