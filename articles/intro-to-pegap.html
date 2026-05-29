@@ -94,8 +94,15 @@ the fund - <code>vintage_year</code> — year the fund began investing -
 <h2 id="vintage-diversification-score">Vintage Diversification Score<a class="anchor" aria-label="anchor" href="#vintage-diversification-score"></a>
 </h2>
 <p>Quantifies the risk of weighting portfolios to heavily on one year
-using the Herfindahl-Hirschman Index (HHI). A score of 100 means perfect
-diversification across years.</p>
+using the Herfindahl-Hirschman Index (HHI). HHI is scaled from 0-1,
+multiplied by 100 to get a more intuitive score. The formula also
+accounts for the number of vintage years such that a portfolio with only
+2 vintages would be able to reach a score of 100 (which it wouldn’t do
+normally).</p>
+<p>Usually, HHI is counter-intuitive, in that a low HHI is better. Using
+my scoring formula, the inverse is true: a score of 100 means perfect
+diversification across all years whereas lower scores represent intense
+concentrations in one or few years.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/vintage_diversification_score.html">vintage_diversification_score</a></span><span class="op">(</span></span>
 <span>  fund_names <span class="op">=</span> <span class="va">code_script</span><span class="op">$</span><span class="va">fund</span>,</span>
@@ -117,7 +124,8 @@ diversification across years.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $flag</span></span>
 <span><span class="co">#&gt; [1] "WARNING: High vintage concentration"</span></span></code></pre></div>
-<p>**Note: when HHI&gt;0.25, a warning message displays.</p>
+<p><strong>Note: when HHI&gt;0.25, a warning message
+displays.</strong></p>
 </div>
 <div class="section level2">
 <h2 id="unfunded-liability-schedule">Unfunded Liability Schedule<a class="anchor" aria-label="anchor" href="#unfunded-liability-schedule"></a>
@@ -126,7 +134,26 @@ diversification across years.</p>
 realistic preset deployment curve (Year1-Slow, Year3-Peak) It calculates
 each fund’s current unfunded liability
 (<code>commitment - called + recallable</code>) and distributes it
-across five years</p>
+across five years in a table. The table shows the total current unfunded
+liability, and then shows the break down with appropriately labeled
+headers.</p>
+<p>Unfunded liability schedules help inform both investors and fund
+managers when capital will be needed (in other words how much investors
+owe the fund manager in a given year). This structure allows investors
+to hold onto their own assets, only liquidating when necessary (thus
+allowing them to increase personal wealth with funds that would
+otherwise be sitting around doing nothing). This is important because PE
+funds typically make investments that require longer maturity timelines,
+meaning there is no reason to draw on the investors’ capital until a
+significant transaction occurs.</p>
+<p>The deployment curve is defined as:</p>
+<ul>
+<li>Year 1: 5%</li>
+<li>Year 2: 20%</li>
+<li>Year 3: 35%</li>
+<li>Year 4: 25%</li>
+<li>Year 5: 15%</li>
+</ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/unfunded_liability_schedule.html">unfunded_liability_schedule</a></span><span class="op">(</span><span class="va">code_script</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     fund current_unfunded Year1 Year2 Year3 Year4 Year5</span></span>
@@ -142,7 +169,15 @@ across five years</p>
 <p>Provides a visualisation of the portfolio as a scatterplot. Each
 point represents a fund, size shows total commitment and colour shows
 deployment progress. The x-axis shows vintage year, and the y-axis shows
-remaining unfunded commitment.</p>
+remaining unfunded commitment. It calls upon ggplot2’s
+<code>theme_classic()</code>, and has automatic labels for the x-axis,
+y-axis, legend (size &amp; colour).</p>
+<p>The colour scale is pre-defined as:</p>
+<ul>
+<li>High (75% or more called): Dark Green</li>
+<li>Middle (45%-70% called): Orange</li>
+<li>Low (Less than 45% called): Red</li>
+</ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/portfolio_plot.html">portfolio_plot</a></span><span class="op">(</span><span class="va">code_script</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro-to-pegap_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="700"></p>

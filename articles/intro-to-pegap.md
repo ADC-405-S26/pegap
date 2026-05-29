@@ -34,8 +34,15 @@ USD (\$) - `recallable` — recallable distributions in USD (\$)
 ## Vintage Diversification Score
 
 Quantifies the risk of weighting portfolios to heavily on one year using
-the Herfindahl-Hirschman Index (HHI). A score of 100 means perfect
-diversification across years.
+the Herfindahl-Hirschman Index (HHI). HHI is scaled from 0-1, multiplied
+by 100 to get a more intuitive score. The formula also accounts for the
+number of vintage years such that a portfolio with only 2 vintages would
+be able to reach a score of 100 (which it wouldn’t do normally).
+
+Usually, HHI is counter-intuitive, in that a low HHI is better. Using my
+scoring formula, the inverse is true: a score of 100 means perfect
+diversification across all years whereas lower scores represent intense
+concentrations in one or few years.
 
 ``` r
 
@@ -61,7 +68,7 @@ vintage_diversification_score(
 #> [1] "WARNING: High vintage concentration"
 ```
 
-\*\*Note: when HHI\>0.25, a warning message displays.
+**Note: when HHI\>0.25, a warning message displays.**
 
 ## Unfunded Liability Schedule
 
@@ -69,7 +76,26 @@ Forecasts expected capital calls over a 5-year timeline using a
 realistic preset deployment curve (Year1-Slow, Year3-Peak) It calculates
 each fund’s current unfunded liability
 (`commitment - called + recallable`) and distributes it across five
-years
+years in a table. The table shows the total current unfunded liability,
+and then shows the break down with appropriately labeled headers.
+
+Unfunded liability schedules help inform both investors and fund
+managers when capital will be needed (in other words how much investors
+owe the fund manager in a given year). This structure allows investors
+to hold onto their own assets, only liquidating when necessary (thus
+allowing them to increase personal wealth with funds that would
+otherwise be sitting around doing nothing). This is important because PE
+funds typically make investments that require longer maturity timelines,
+meaning there is no reason to draw on the investors’ capital until a
+significant transaction occurs.
+
+The deployment curve is defined as:
+
+- Year 1: 5%
+- Year 2: 20%
+- Year 3: 35%
+- Year 4: 25%
+- Year 5: 15%
 
 ``` r
 
@@ -87,7 +113,15 @@ unfunded_liability_schedule(code_script)
 Provides a visualisation of the portfolio as a scatterplot. Each point
 represents a fund, size shows total commitment and colour shows
 deployment progress. The x-axis shows vintage year, and the y-axis shows
-remaining unfunded commitment.
+remaining unfunded commitment. It calls upon ggplot2’s
+`theme_classic()`, and has automatic labels for the x-axis, y-axis,
+legend (size & colour).
+
+The colour scale is pre-defined as:
+
+- High (75% or more called): Dark Green
+- Middle (45%-70% called): Orange
+- Low (Less than 45% called): Red
 
 ``` r
 
