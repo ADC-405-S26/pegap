@@ -9,7 +9,7 @@ vintage_diversification_score(fund_names, vintage_years, committed_capital)
 \arguments{
 \item{fund_names}{A character vector of fund names}
 
-\item{vintage_years}{An integer vector of vintage years}
+\item{vintage_years}{A numeric vector of vintage years}
 
 \item{committed_capital}{A numeric vector of committed capital amounts (must be positive)}
 }
@@ -23,7 +23,7 @@ Score Vintage Year Diversification
 \examples{
 vintage_diversification_score(
   c("Fund A", "Fund B", "Fund C"),
-  c(2018L, 2019L, 2018L),
-  c(10e6, 15e6, 5e6)
+  c(2018, 2019, 2018),
+  c(10000000, 15000000, 5000000)
 )
 }
