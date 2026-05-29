@@ -1,7 +1,7 @@
 #' Plot PE Portfolio Information
 #'
 #' @param data A data frame containing fund information. Column names default
-#'   to fund, vintage_year, commitment, called, and recallable.
+#'   to fund, vintage_year, commitment, called, and recallable. All currency is in USD.
 #'
 #' @return A ggplot2 scatter plot showing unfunded commitment by vintage year,
 #'   with point size scaled to commitment and colour indicating deployment progress.

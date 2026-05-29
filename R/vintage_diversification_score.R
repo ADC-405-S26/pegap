@@ -1,11 +1,11 @@
 #' Score Vintage Year Diversification
 #'
 #' @param fund_names A character vector of fund names
-#' @param vintage_years A numeric vector of vintage years
-#' @param committed_capital A numeric vector of committed capital amounts (must be positive)
+#' @param vintage_years A numeric vector of vintage years of equal array length to fund_names
+#' @param committed_capital A numeric vector of USD values of equal array length to fund_names
 #'
-#' @return A named list containing vintage_weights, HHI, effective_vintages,
-#'   diversification_score (0-100), and a concentration flag
+#' @return A list containing vintage_weights, HHI, effective_vintages, and
+#'   diversification_score (0-100)
 #' @export
 #'
 #' @examples

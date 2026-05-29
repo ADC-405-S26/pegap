@@ -8,7 +8,7 @@ portfolio_plot(data)
 }
 \arguments{
 \item{data}{A data frame containing fund information. Column names default
-to fund, vintage_year, commitment, called, and recallable.}
+to fund, vintage_year, commitment, called, and recallable. All currency is in USD.}
 }
 \value{
 A ggplot2 scatter plot showing unfunded commitment by vintage year,
