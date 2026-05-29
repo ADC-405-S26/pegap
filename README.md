@@ -14,8 +14,8 @@ visualising portfolios.
 ## Installation
 
 ``` r
-# install.packages("pak")
-pak::pak("ADC-405-S26/pegap")
+# remotes::install_github("ADC-405-S26/pegap")
+library(pegap)
 ```
 
 ## Functions
