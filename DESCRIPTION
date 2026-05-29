@@ -3,9 +3,7 @@ Title: Private Equity Portfolio Analysis Tools
 Version: 0.0.0.9000
 Authors@R: 
     person("Oliver", "Reece", , "reeceo@lawrence.edu", role = c("aut", "cre"))
-Description: An R package for analysing private equity portfolios. It aims to
-help users detemrine how to spread out their investments are across different
-years, forecast future cash demands, and visualise portfolio progress.
+Description: An R package for analysing private equity portfolios. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
