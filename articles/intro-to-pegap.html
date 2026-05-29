@@ -65,11 +65,17 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adc-405-s26.github.io/pegap/" class="external-link">pegap</a></span><span class="op">)</span></span></code></pre></div>
-<p>##Motivation RStudio currently does not have extensive packages for
-PE Portfolio Analysis. This package aims to bridge a couple of those
-gaps.</p>
-<p>##Dataset <code>pegap</code> contains a pre-built simple dataset to
-practice with containing 5 fake fund information.</p>
+<div class="section level2">
+<h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
+</h2>
+<p>RStudio currently does not have extensive packages for PE Portfolio
+Analysis. This package aims to bridge a couple of those gaps.</p>
+</div>
+<div class="section level2">
+<h2 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a>
+</h2>
+<p><code>pegap</code> contains a pre-built simple dataset to practice
+with containing 5 fake funds’ information.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">code_script</span></span>
 <span><span class="co">#&gt;     fund vintage_year commitment called recallable</span></span>
@@ -83,9 +89,13 @@ the fund - <code>vintage_year</code> — year the fund began investing -
 <code>commitment</code> — total capital committed in USD (<span class="math inline">$)
 - `called` — capital called to date in USD ($</span>) -
 <code>recallable</code> — recallable distributions in USD ($)</p>
-<p>##Vintage Diversification Score Quantifies the risk of weighting
-portfolios to heavily on one year using the Herfindahl-Hirschman Index
-(HHI). A score of 100 means perfect diversification across years.</p>
+</div>
+<div class="section level2">
+<h2 id="vintage-diversification-score">Vintage Diversification Score<a class="anchor" aria-label="anchor" href="#vintage-diversification-score"></a>
+</h2>
+<p>Quantifies the risk of weighting portfolios to heavily on one year
+using the Herfindahl-Hirschman Index (HHI). A score of 100 means perfect
+diversification across years.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/vintage_diversification_score.html">vintage_diversification_score</a></span><span class="op">(</span></span>
 <span>  fund_names <span class="op">=</span> <span class="va">code_script</span><span class="op">$</span><span class="va">fund</span>,</span>
@@ -108,9 +118,13 @@ portfolios to heavily on one year using the Herfindahl-Hirschman Index
 <span><span class="co">#&gt; $flag</span></span>
 <span><span class="co">#&gt; [1] "WARNING: High vintage concentration"</span></span></code></pre></div>
 <p>**Note: when HHI&gt;0.25, a warning message displays.</p>
-<p>##Unfunded Liability Schedule Forecasts expected capital calls over a
-5-year timeline using a realistic preset deployment curve (Year1-Slow,
-Year3-Peak) It calculates each fund’s current unfunded liability
+</div>
+<div class="section level2">
+<h2 id="unfunded-liability-schedule">Unfunded Liability Schedule<a class="anchor" aria-label="anchor" href="#unfunded-liability-schedule"></a>
+</h2>
+<p>Forecasts expected capital calls over a 5-year timeline using a
+realistic preset deployment curve (Year1-Slow, Year3-Peak) It calculates
+each fund’s current unfunded liability
 (<code>commitment - called + recallable</code>) and distributes it
 across five years</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -121,15 +135,20 @@ across five years</p>
 <span><span class="co">#&gt; 3 Fund C             2500   125   500   875   625   375</span></span>
 <span><span class="co">#&gt; 4 Fund D            10000   500  2000  3500  2500  1500</span></span>
 <span><span class="co">#&gt; 5 Fund E             9000   450  1800  3150  2250  1350</span></span></code></pre></div>
-<p>##Portfolio Plot Provides a visualisation of the portfolio as a
-scatterplot. Each point represents a fund, size shows total commitment
-and colour shows deployment progress.</p>
+</div>
+<div class="section level2">
+<h2 id="portfolio-plot">Portfolio Plot<a class="anchor" aria-label="anchor" href="#portfolio-plot"></a>
+</h2>
+<p>Provides a visualisation of the portfolio as a scatterplot. Each
+point represents a fund, size shows total commitment and colour shows
+deployment progress. The x-axis shows vintage year, and the y-axis shows
+remaining unfunded commitment.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/portfolio_plot.html">portfolio_plot</a></span><span class="op">(</span><span class="va">code_script</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-pegap_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="700">
-The x-axis shows vintage year, and the y-axis shows remaining unfunded
-commitment.</p>
-  </main>
+<p><img src="intro-to-pegap_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="700"></p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 

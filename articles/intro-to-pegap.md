@@ -5,11 +5,15 @@
 library(pegap)
 ```
 
-\##Motivation RStudio currently does not have extensive packages for PE
-Portfolio Analysis. This package aims to bridge a couple of those gaps.
+## Motivation
 
-\##Dataset `pegap` contains a pre-built simple dataset to practice with
-containing 5 fake fund information.
+RStudio currently does not have extensive packages for PE Portfolio
+Analysis. This package aims to bridge a couple of those gaps.
+
+## Dataset
+
+`pegap` contains a pre-built simple dataset to practice with containing
+5 fake funds’ information.
 
 ``` r
 
@@ -27,9 +31,11 @@ The dataset contains five variables: - `fund` — name of the fund -
 capital committed in USD (\$) - \`called\` — capital called to date in
 USD (\$) - `recallable` — recallable distributions in USD (\$)
 
-\##Vintage Diversification Score Quantifies the risk of weighting
-portfolios to heavily on one year using the Herfindahl-Hirschman Index
-(HHI). A score of 100 means perfect diversification across years.
+## Vintage Diversification Score
+
+Quantifies the risk of weighting portfolios to heavily on one year using
+the Herfindahl-Hirschman Index (HHI). A score of 100 means perfect
+diversification across years.
 
 ``` r
 
@@ -57,9 +63,11 @@ vintage_diversification_score(
 
 \*\*Note: when HHI\>0.25, a warning message displays.
 
-\##Unfunded Liability Schedule Forecasts expected capital calls over a
-5-year timeline using a realistic preset deployment curve (Year1-Slow,
-Year3-Peak) It calculates each fund’s current unfunded liability
+## Unfunded Liability Schedule
+
+Forecasts expected capital calls over a 5-year timeline using a
+realistic preset deployment curve (Year1-Slow, Year3-Peak) It calculates
+each fund’s current unfunded liability
 (`commitment - called + recallable`) and distributes it across five
 years
 
@@ -74,14 +82,16 @@ unfunded_liability_schedule(code_script)
 #> 5 Fund E             9000   450  1800  3150  2250  1350
 ```
 
-\##Portfolio Plot Provides a visualisation of the portfolio as a
-scatterplot. Each point represents a fund, size shows total commitment
-and colour shows deployment progress.
+## Portfolio Plot
+
+Provides a visualisation of the portfolio as a scatterplot. Each point
+represents a fund, size shows total commitment and colour shows
+deployment progress. The x-axis shows vintage year, and the y-axis shows
+remaining unfunded commitment.
 
 ``` r
 
 portfolio_plot(code_script)
 ```
 
-![](intro-to-pegap_files/figure-html/unnamed-chunk-5-1.png) The x-axis
-shows vintage year, and the y-axis shows remaining unfunded commitment.
+![](intro-to-pegap_files/figure-html/unnamed-chunk-5-1.png)
