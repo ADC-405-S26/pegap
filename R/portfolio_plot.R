@@ -19,6 +19,15 @@
 #' )
 #' portfolio_plot(df)
 portfolio_plot <- function(data) {
+  vintage_year <- NULL
+  unfunded <- NULL
+  commitment <- NULL
+  deployment <- NULL
+  #i was getting a note saying no visible binding for the vars.
+  #the above fixed it by defaulting them to null.
+  #logic was that if I give it no value r will know that I want them even though
+  #they're not technically doing anything.
+
 
   checkmate::assert_data_frame(data)
 
