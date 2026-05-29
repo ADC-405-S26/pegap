@@ -29,6 +29,9 @@ library(pegap)
 - `portfolio_plot()` — visualises portfolio progress by vintage year as
   a scatterplot
 
+Listed below are some (very) simple examples with their corresponding
+outputs:
+
 ## Examples
 
 ``` r

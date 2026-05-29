@@ -35,6 +35,8 @@ library(pegap)
 - `unfunded_liability_schedule()` — forecasts future capital calls across a 5-year schedule with a preset drawdown curve
 - `portfolio_plot()` — visualises portfolio progress by vintage year as a scatterplot
 
+Listed below are some (very) simple examples with their corresponding outputs:
+
 ## Examples
 
 ```{r example, message = FALSE}
