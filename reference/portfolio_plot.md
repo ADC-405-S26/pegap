@@ -13,7 +13,8 @@ portfolio_plot(data)
 - data:
 
   A data frame containing fund information. Column names default to
-  fund, vintage_year, commitment, called, and recallable.
+  fund, vintage_year, commitment, called, and recallable. All currency
+  is in USD.
 
 ## Value
 

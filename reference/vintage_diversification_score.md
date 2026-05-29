@@ -16,16 +16,16 @@ vintage_diversification_score(fund_names, vintage_years, committed_capital)
 
 - vintage_years:
 
-  A numeric vector of vintage years
+  A numeric vector of vintage years of equal array length to fund_names
 
 - committed_capital:
 
-  A numeric vector of committed capital amounts (must be positive)
+  A numeric vector of USD values of equal array length to fund_names
 
 ## Value
 
-A named list containing vintage_weights, HHI, effective_vintages,
-diversification_score (0-100), and a concentration flag
+A list containing vintage_weights, HHI, effective_vintages, and
+diversification_score (0-100)
 
 ## Examples
 
