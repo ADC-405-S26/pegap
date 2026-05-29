@@ -70,6 +70,9 @@ portfolio_plot(code_script)
 
 ## All functions
 
+- [`code_script`](https://github.com/ADC-405-S26/pegap/reference/code_script.md)
+  : A dataset to be used to practice with the porfolio analysis
+  functions.
 - [`portfolio_plot()`](https://github.com/ADC-405-S26/pegap/reference/portfolio_plot.md)
   : Plot PE Portfolio Information
 - [`unfunded_liability_schedule()`](https://github.com/ADC-405-S26/pegap/reference/unfunded_liability_schedule.md)

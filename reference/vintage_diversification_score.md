@@ -16,7 +16,7 @@ vintage_diversification_score(fund_names, vintage_years, committed_capital)
 
 - vintage_years:
 
-  An integer vector of vintage years
+  A numeric vector of vintage years
 
 - committed_capital:
 
@@ -32,8 +32,8 @@ diversification_score (0-100), and a concentration flag
 ``` r
 vintage_diversification_score(
   c("Fund A", "Fund B", "Fund C"),
-  c(2018L, 2019L, 2018L),
-  c(10e6, 15e6, 5e6)
+  c(2018, 2019, 2018),
+  c(10000000, 15000000, 5000000)
 )
 #> $vintage_weights
 #> 2018 2019 
